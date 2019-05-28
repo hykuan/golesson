@@ -19,22 +19,24 @@ var helloType = graphql.NewObject(graphql.ObjectConfig{
 	},
 })
 
-var queryHello = graphql.Field{
-	Name:        "QueryHello",
-	Description: "Query Hello",
-	Type:        graphql.NewList(helloType),
-	Args: graphql.FieldConfigArgument{
-		"id": &graphql.ArgumentConfig{
-			Type: graphql.Int,
+func HelloSchema() *graphql.Field {
+	return &graphql.Field{
+		Name:        "QueryHello",
+		Description: "Query Hello",
+		Type:        graphql.NewList(helloType),
+		Args: graphql.FieldConfigArgument{
+			"id": &graphql.ArgumentConfig{
+				Type: graphql.Int,
+			},
+			"name": &graphql.ArgumentConfig{
+				Type: graphql.String,
+			},
 		},
-		"name": &graphql.ArgumentConfig{
-			Type: graphql.String,
-		},
-	},
-	Resolve: func(p graphql.ResolveParams) (result interface{}, err error) {
-		id, _ := p.Args["id"].(int)
-		name, _ := p.Args["name"].(string)
+		Resolve: func(p graphql.ResolveParams) (result interface{}, err error) {
+			id, _ := p.Args["id"].(int)
+			name, _ := p.Args["name"].(string)
 
-		return (&model.Hello{}).Query(id, name)
-	},
+			return (&model.Hello{}).Query(id, name)
+		},
+	}
 }
