@@ -17,6 +17,7 @@ var aggregateMutations = graphql.NewObject(graphql.ObjectConfig{
 	Fields: graphql.Fields{
 		"create_author":   CreateAuthorMutation(),
 		"create_tutorial": CreateTutorialMutation(),
+		"create_comment": CreateCommentMutation(),
 	},
 })
 
