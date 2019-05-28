@@ -1,10 +1,10 @@
 package router
 
 import (
-	"golesson/controller/hello"
-	"golesson/controller/graphql"
-	
 	"github.com/gin-gonic/gin"
+
+	"github.com/hykuan/golesson/controller/graphql"
+	"github.com/hykuan/golesson/controller/hello"
 )
 
 var Router *gin.Engine

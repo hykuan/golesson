@@ -1,13 +1,13 @@
 package schema
 
 import (
-	"golesson/model"
-
 	"github.com/graphql-go/graphql"
+
+	"github.com/hykuan/golesson/model"
 )
 
 var helloType = graphql.NewObject(graphql.ObjectConfig{
-	Name: "Hello",
+	Name:        "Hello",
 	Description: "Hello Model",
 	Fields: graphql.Fields{
 		"id": &graphql.Field{
@@ -20,9 +20,9 @@ var helloType = graphql.NewObject(graphql.ObjectConfig{
 })
 
 var queryHello = graphql.Field{
-	Name: "QueryHello",
+	Name:        "QueryHello",
 	Description: "Query Hello",
-	Type: graphql.NewList(helloType),
+	Type:        graphql.NewList(helloType),
 	Args: graphql.FieldConfigArgument{
 		"id": &graphql.ArgumentConfig{
 			Type: graphql.Int,
@@ -34,7 +34,7 @@ var queryHello = graphql.Field{
 	Resolve: func(p graphql.ResolveParams) (result interface{}, err error) {
 		id, _ := p.Args["id"].(int)
 		name, _ := p.Args["name"].(string)
-		
+
 		return (&model.Hello{}).Query(id, name)
 	},
 }

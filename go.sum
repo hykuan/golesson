@@ -1,0 +1,8 @@
+github.com/gin-gonic/gin v0.0.0-20150207141043-50e7e427300a h1:GQ+yon87GnS54+LuWntTbOook49Gj8blKLFRbjK2q74=
+github.com/gin-gonic/gin v0.0.0-20150207141043-50e7e427300a/go.mod h1:7cKuhb5qV2ggCFctp2fJQ+ErvciLZrIeoOSOm6mUr7Y=
+github.com/graphql-go/graphql v0.7.8 h1:769CR/2JNAhLG9+aa8pfLkKdR0H+r5lsQqling5WwpU=
+github.com/graphql-go/graphql v0.7.8/go.mod h1:k6yrAYQaSP59DC5UVxbgxESlmVyojThKdORUqGDGmrI=
+github.com/graphql-go/handler v0.2.3 h1:CANh8WPnl5M9uA25c2GBhPqJhE53Fg0Iue/fRNla71E=
+github.com/graphql-go/handler v0.2.3/go.mod h1:leLF6RpV5uZMN1CdImAxuiayrYYhOk33bZciaUGaXeU=
+github.com/julienschmidt/httprouter v1.1.0 h1:7wLdtIiIpzOkC9u6sXOozpBauPdskj3ru4EI5MABq68=
+github.com/julienschmidt/httprouter v1.1.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=

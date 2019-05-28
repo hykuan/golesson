@@ -1,8 +1,10 @@
 package main
 
-import "golesson/route"
+import (
+	"github.com/hykuan/golesson/route"
+)
 
-func main () {
+func main() {
 	r := router.Router
 
 	router.SetRouter()
