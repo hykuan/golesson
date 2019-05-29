@@ -35,7 +35,7 @@ func SingleAuthorSchema() *graphql.Field {
 		Resolve: func(params graphql.ResolveParams) (interface{}, error) {
 			var author model.Author
 			db, _ := gorm.Open("sqlite3", "sqlite.db")
-			db.Debug().Set("gorm:auto_preload", true).First(&author, params.Args["id"].(int))
+			db.Set("gorm:auto_preload", true).First(&author, params.Args["id"].(int))
 
 			for i := range author.Tutorials {
 				var a model.Author
@@ -81,7 +81,7 @@ func CreateAuthorMutation() *graphql.Field {
 		Resolve: func(params graphql.ResolveParams) (interface{}, error) {
 			author := model.Author{Name: params.Args["name"].(string)}
 			db, _ := gorm.Open("sqlite3", "sqlite.db")
-			err := db.Debug().Save(&author).Error
+			err := db.Save(&author).Error
 			return author, err
 		},
 	}
