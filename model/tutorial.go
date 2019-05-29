@@ -12,6 +12,7 @@ import (
 type Tutorial struct {
 	ID        int `gorm:"primary_key"`
 	Title     string
+	Author    Author `gorm:"PRELOAD:false" json:"author"`
 	AuthorID  int `json:"author_id"`
 	Comments  []Comment `gorm:"foreignkey:TutorialID"`
 	CreatedAt time.Time

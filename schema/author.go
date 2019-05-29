@@ -36,6 +36,12 @@ func SingleAuthorSchema() *graphql.Field {
 			var author model.Author
 			db, _ := gorm.Open("sqlite3", "sqlite.db")
 			db.Debug().Set("gorm:auto_preload", true).First(&author, params.Args["id"].(int))
+
+			for i := range author.Tutorials {
+				var a model.Author
+				db.First(&a, author.Tutorials[i].AuthorID)
+				author.Tutorials[i].Author = a
+			}
 			return author, nil
 		},
 	}
@@ -49,6 +55,15 @@ func ListAuthorSchema() *graphql.Field {
 			var authors []model.Author
 			db, _ := gorm.Open("sqlite3", "sqlite.db")
 			db.Set("gorm:auto_preload", true).Find(&authors)
+
+			for i := range authors {
+				for j := range authors[i].Tutorials {
+					var a model.Author
+					db.First(&a, authors[i].Tutorials[j].AuthorID)
+					authors[i].Tutorials[j].Author = a
+				}
+			}
+
 			return authors, nil
 		},
 	}

@@ -28,6 +28,12 @@ var tutorialType = graphql.NewObject(
 	},
 )
 
+func init() {
+	tutorialType.AddFieldConfig("author", &graphql.Field{
+		Type: authorType,
+	})
+}
+
 func SingleTutorialSchema() *graphql.Field {
 	return &graphql.Field{
 		Type:        tutorialType,
