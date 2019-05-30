@@ -15,6 +15,7 @@ var authorType = graphql.NewObject(
 			},
 			"name": &graphql.Field{
 				Type: graphql.String,
+				//DeprecationReason: "i want deprecate this",
 			},
 			"tutorials": &graphql.Field{
 				Type: graphql.NewList(tutorialType),
