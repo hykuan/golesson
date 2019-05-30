@@ -1,6 +1,8 @@
 package schema
 
 import (
+	"fmt"
+
 	"github.com/graphql-go/graphql"
 
 	"github.com/hykuan/golesson/model"
@@ -15,6 +17,22 @@ var helloType = graphql.NewObject(graphql.ObjectConfig{
 		},
 		"name": &graphql.Field{
 			Type: graphql.String,
+		},
+		"echo": &graphql.Field{
+			Type: graphql.String,
+			Description: "Echo what you enter",
+			Args: graphql.FieldConfigArgument{
+				"message": &graphql.ArgumentConfig{
+					Type: graphql.String,
+				},
+			},
+			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+				// get arg value
+				message, _ := p.Args["message"].(string)
+				source, _ := p.Source.(model.Hello)
+
+				return fmt.Sprintf("echo for %s with message: %s", source.Name, message), nil
+			},
 		},
 	},
 })
